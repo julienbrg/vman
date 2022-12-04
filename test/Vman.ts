@@ -9,7 +9,7 @@ describe("Vman", function () {
     const [owner, otherAccount] = await ethers.getSigners();
 
     const Vman = await ethers.getContractFactory("Vman");
-    const vman = await Vman.deploy("yo");
+    const vman = await Vman.deploy("https://bafybeihfsyjq6sxnlfchmpxrj2gcpjfdbxxihf5xfzgj2pw2rqxpralw3a.ipfs.w3s.link/my-post.html");
 
     return { vman, owner, otherAccount };
   }
@@ -24,8 +24,8 @@ describe("Vman", function () {
   describe("Updates", function () {
     it("Should update", async function () {
       const { vman, owner } = await loadFixture(deployFixture);
-      await vman.update("yes");
-      await expect(await vman.cid()).to.be.equal("yes");
+      await vman.update("https://bafybeihfsyjq6sxnlfchmpxrj2gcpjfdbxxihf5xfzgj2pw2rqxpralw3a.ipfs.w3s.link/style.css");
+      await expect(await vman.cid()).to.be.equal("https://bafybeihfsyjq6sxnlfchmpxrj2gcpjfdbxxihf5xfzgj2pw2rqxpralw3a.ipfs.w3s.link/style.css");
     });
 
     describe("Events", function () {
