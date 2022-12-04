@@ -10,13 +10,13 @@ npm i
 
 ## Test
 
+Create a `.env` file at the root directory with your own keys, then:
+
 ```shell
 npx hardhat test
 ```
 
 ## Deploy
-
-Create a `.env` file at the root directory with your own keys.
 
 Deploy to Aurora Testnet:
 
