@@ -6,11 +6,18 @@ dotenv.config();
 const config: HardhatUserConfig = {
   solidity: "0.8.17",
   networks: {
-    aurora_testnet: {
-      url: 'https://testnet.aurora.dev',
-      accounts: [`0x${process.env.AURORA_TESTNET_PRIVATE_KEY}`],
-      chainId: 1313161555
+    hardhat: {
+      chainId: 1337,
+      allowUnlimitedContractSize: true
     },
+    goerli: {
+      url: process.env.GOERLI_TESTNET_RPC_URL || "",
+      accounts:
+        process.env.DEPLOYER_DAO_TESTER_PRIVATE_KEY !== undefined ? [process.env.DEPLOYER_DAO_TESTER_PRIVATE_KEY] : [],
+    },
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY,
   },
 };
 

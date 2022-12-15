@@ -17,13 +17,13 @@ async function main() {
   }
 
   // Change this value with your contract address
-  const address = "0x6935511b862A1bA9d3B991cA00d583c71A6dE78b"
+  const address = "0x6cb3DBF3dAD25bB911558f174F87441Acf517c88"
 
   const vman = new ethers.Contract(address, vmanAbi.abi, deployer)
-  const update = await vman.update("updated, thanks! :)", "v2")
-  console.log(update)
+  await vman.update("updated, thanks! :)", "v2")
 
-  console.log("New website url:", await vman.cid())
+  const newCid = await vman.cid()
+  console.log("New uri:", newCid)
 }
 
 main().catch((error) => {

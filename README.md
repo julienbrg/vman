@@ -16,12 +16,18 @@ Create a `.env` file at the root directory with your own keys, then:
 npx hardhat test
 ```
 
-## Deploy
+## Use
 
-Deploy to Aurora Testnet:
+Deploy to Goerli:
 
 ```shell
-npx hardhat run scripts/deploy.ts --network aurora_testnet
+npx hardhat run scripts/deploy.ts --network goerli
+```
+
+Update:
+
+```shell
+npx hardhat run scripts/update.ts --network goerli
 ```
 
 ## Support
