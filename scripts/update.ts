@@ -20,7 +20,7 @@ async function main() {
   const address = "0x6935511b862A1bA9d3B991cA00d583c71A6dE78b"
 
   const vman = new ethers.Contract(address, vmanAbi.abi, deployer)
-  const update = await vman.update("updated, thanks! :)")
+  const update = await vman.update("updated, thanks! :)", "v2")
   console.log(update)
 
   console.log("New website url:", await vman.cid())
