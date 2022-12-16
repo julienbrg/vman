@@ -3,7 +3,7 @@ pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Vman is Ownable {
+contract Vault is Ownable {
     string public cid;
     string public tag;
 

@@ -2,29 +2,29 @@ import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from "chai";
 import { ethers } from "hardhat";
 
-describe("Vman", function () {
+describe("Vault", function () {
 
   async function deployFixture() {
     const [owner, otherAccount] = await ethers.getSigners();
 
-    const Vman = await ethers.getContractFactory("Vman");
-    const vman = await Vman.deploy("https://bafybeihfsyjq6sxnlfchmpxrj2gcpjfdbxxihf5xfzgj2pw2rqxpralw3a.ipfs.w3s.link/my-post.html", "v1.0.0");
+    const Vault = await ethers.getContractFactory("Vault");
+    const vault = await Vault.deploy("bafybeihprzyvilohv6zwyqiel7wt3dncpjqdsc6q7xfj3iuraoc7n552ya", "v1");
 
-    return { vman, owner, otherAccount };
+    return { vault, owner, otherAccount };
   }
 
   describe("Deployment", function () {
     it("Should set the right owner", async function () {
-      const { vman, owner } = await loadFixture(deployFixture);
-      expect(await vman.owner()).to.equal(owner.address);
+      const { vault, owner } = await loadFixture(deployFixture);
+      expect(await vault.owner()).to.equal(owner.address);
     });
   });
 
   describe("Interactions", function () {
     it("Should update", async function () {
-      const { vman } = await loadFixture(deployFixture);
-      await vman.update("https://bafybeihfsyjq6sxnlfchmpxrj2gcpjfdbxxihf5xfzgj2pw2rqxpralw3a.ipfs.w3s.link/style.css", "v2");
-      await expect(await vman.cid()).to.be.equal("https://bafybeihfsyjq6sxnlfchmpxrj2gcpjfdbxxihf5xfzgj2pw2rqxpralw3a.ipfs.w3s.link/style.css");
+      const { vault } = await loadFixture(deployFixture);
+      await vault.update("bafybeihprzyvilohv6zwyqiel7wt3dncpjqdsc6q7xfj3iuraoc7n552ya", "v2");
+      await expect(await vault.cid()).to.be.equal("bafybeihprzyvilohv6zwyqiel7wt3dncpjqdsc6q7xfj3iuraoc7n552ya");
     });
   });
 });
